@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>A Maçã Envenenada — HQ Digital</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bangers&family=Comic+Neue:ital,wght@0,700;1,700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <header>
+    <h1>O Elixir do Sono Eterno</h1>
+    <p>Uma história em quadrinhos interativa com narração em áudio</p>
+    <div class="controls-top">
+      <button class="btn-listen" onclick="stopSpeech()">⏹️ Parar Áudio</button>
+    </div>
+  </header>
+
+  <main class="comic-page">
+
+    <!-- CENA 1 -->
+    <article class="panel" id="panel-1">
+      <div class="panel-header">
+        <span class="scene-badge">CENA 01</span>
+        <button class="btn-listen" data-panel="panel-1" onclick="toggleSpeak(this, 'panel-1')">
+          🔊 Ouvir
+        </button>
+      </div>
+      <div class="panel-body">
+        <div class="image-wrapper">
+          <img src="imagens/cena1.png" alt="Cena 1: Bruxa pingando elixir verde em uma maçã vermelha no castelo" />
+        </div>
+        <div class="balloons-area">
+          <div class="narrator-box" data-speech="Narrador: Nas sombras de um castelo esquecido, a traição fermenta.">
+            Nas sombras de um castelo esquecido, <span class="highlight">a traição</span> fermenta.
+          </div>
+          <div class="speech-bubble" data-speech="Bruxa: Apenas uma gota deste elixir e o sono eterno será dele.">
+            <span class="speaker-tag">🧙‍♀️ Bruxa</span>
+            Apenas uma gota deste elixir e o <span class="highlight">sono eterno</span> será dele.
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <!-- CENA 2 -->
+    <article class="panel" id="panel-2">
+      <div class="panel-header">
+        <span class="scene-badge">CENA 02</span>
+        <button class="btn-listen" data-panel="panel-2" onclick="toggleSpeak(this, 'panel-2')">
+          🔊 Ouvir
+        </button>
+      </div>
+      <div class="panel-body">
+        <div class="image-wrapper">
+          <img src="imagens/cena2.png" alt="Cena 2: Bruxa disfarçada entregando a maçã para a jovem no mercado" />
+        </div>
+        <div class="balloons-area">
+          <div class="narrator-box" data-speech="Narrador: No mercado da vila, um presente insidioso é dado.">
+            No mercado da vila, um presente <span class="highlight">insidioso</span> é dado.
+          </div>
+          <div class="speech-bubble" data-speech="Velha Senhora: Leve, minha jovem. É a maçã mais doce do reino.">
+            <span class="speaker-tag">👵 Velha Senhora</span>
+            Leve, minha jovem. É a maçã <span class="highlight">mais doce</span> do reino.
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <!-- CENA 3 -->
+    <article class="panel" id="panel-3">
+      <div class="panel-header">
+        <span class="scene-badge">CENA 03</span>
+        <button class="btn-listen" data-panel="panel-3" onclick="toggleSpeak(this, 'panel-3')">
+          🔊 Ouvir
+        </button>
+      </div>
+      <div class="panel-body">
+        <div class="image-wrapper">
+          <img src="imagens/cena3.png" alt="Cena 3: Jovem observando a maçã brilhante sob uma árvore na floresta" />
+        </div>
+        <div class="balloons-area">
+          <div class="narrator-box" data-speech="Narrador: Sob uma árvore centenária, a dúvida sussurra. O suspense cresce.">
+            Sob uma árvore centenária, a dúvida sussurra. O <span class="highlight">suspense</span> cresce.
+          </div>
+          <div class="thought-bubble" data-speech="Pensamento da Jovem: Algo não parece certo. O cheiro... e esse brilho...">
+            <span class="speaker-tag">💭 Pensamento da Jovem</span>
+            ...Algo não parece certo. O cheiro... e esse <span class="highlight">brilho</span>...
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <!-- CENA 4 -->
+    <article class="panel" id="panel-4">
+      <div class="panel-header">
+        <span class="scene-badge">CENA 04</span>
+        <button class="btn-listen" data-panel="panel-4" onclick="toggleSpeak(this, 'panel-4')">
+          🔊 Ouvir
+        </button>
+      </div>
+      <div class="panel-body">
+        <div class="image-wrapper">
+          <img src="imagens/cena4.png" alt="Cena 4: Jovem caída dormindo no chão ao lado da maçã mordida e a bruxa observando" />
+        </div>
+        <div class="balloons-area">
+          <div class="narrator-box" data-speech="Narrador: O sono eterno vence. A história termina em silêncio.">
+            O sono eterno vence. A história termina em <span class="highlight">silêncio</span>.
+          </div>
+          <div class="sfx-badge" data-speech="Efeito sonoro: Thud!">
+            THUD!
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <!-- CENA 5 -->
+    <article class="panel" id="panel-5">
+      <div class="panel-header">
+        <span class="scene-badge">CENA 05</span>
+        <button class="btn-listen" data-panel="panel-5" onclick="toggleSpeak(this, 'panel-5')">
+          🔊 Ouvir
+        </button>
+      </div>
+      <div class="panel-body">
+        <div class="image-wrapper">
+          <img src="imagens/cena5.png" alt="Cena 5: Um burro aparece e acorda a jovem enquanto a bruxa fica furiosa" />
+        </div>
+        <div class="balloons-area">
+          <div class="narrator-box" data-speech="Narrador: Quando tudo parecia perdido, apareceu um herói que ninguém chamou.">
+            Quando tudo parecia perdido... apareceu um <span class="highlight">herói</span> que ninguém chamou.
+          </div>
+          <div class="shout-bubble" data-speech="Burro: Sai da frente, Shrek! Eu vi esse filme! É só dar um beijo!">
+            <span class="speaker-tag">🫏 Burro</span>
+            SAI DA FRENTE, SHREK! EU VI ESSE FILME! É SÓ DAR <span class="highlight">UM BEIJO!</span>
+          </div>
+          <div class="shout-bubble" data-speech="Jovem: Aaaah! Um burro?!">
+            <span class="speaker-tag">😱 Jovem</span>
+            <span class="highlight">AAAAH!</span> UM BURRO?!
+          </div>
+          <div class="speech-bubble" data-speech="Burro: De nada, princesa! Aceito cenouras!">
+            <span class="speaker-tag">🫏 Burro</span>
+            DE NADA, PRINCESA! ACEITO <span class="highlight">CENOURAS!</span> 🥕
+          </div>
+          <div class="shout-bubble" data-speech="Bruxa furiosa: Eu passei três dias preparando esse veneno!">
+            <span class="speaker-tag">🧙‍♀️ Bruxa</span>
+            EU PASSEI TRÊS DIAS PREPARANDO ESSE <span class="highlight">VENENO!!!</span>
+          </div>
+          <div class="narrator-box" data-speech="Narrador: Fim. Infelizmente, para a bruxa.">
+            <strong>FIM.</strong> Infelizmente, para a bruxa.
+          </div>
+        </div>
+      </div>
+    </article>
+
+  </main>
+
+  <footer>
+    HQ Digital Interativa • Clique em "🔊 Ouvir" em qualquer quadro para narrar a cena.
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
