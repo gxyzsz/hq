@@ -1,0 +1,78 @@
+let currentButton = null;
+
+function getPortugueseVoice() {
+  const voices = window.speechSynthesis.getVoices();
+  return (
+    voices.find(v => v.lang === 'pt-BR' && v.name.includes('Google')) ||
+    voices.find(v => v.lang === 'pt-BR') ||
+    voices.find(v => v.lang.startsWith('pt')) ||
+    null
+  );
+}
+
+if ('speechSynthesis' in window) {
+  window.speechSynthesis.onvoiceschanged = () => {
+    getPortugueseVoice();
+  };
+}
+
+function stopSpeech() {
+  if ('speechSynthesis' in window) {
+    window.speechSynthesis.cancel();
+  }
+  document.querySelectorAll('.panel').forEach(p => p.classList.remove('speaking'));
+  document.querySelectorAll('.btn-listen').forEach(btn => {
+    if (btn.dataset.panel) {
+      btn.classList.remove('active');
+      btn.innerHTML = '🔊 Ouvir';
+    }
+  });
+  currentButton = null;
+}
+
+function toggleSpeak(button, panelId) {
+  if (!('speechSynthesis' in window)) {
+    alert('Desculpe, seu navegador não suporta narração por voz (SpeechSynthesis).');
+    return;
+  }
+
+  if (currentButton === button && window.speechSynthesis.speaking) {
+    stopSpeech();
+    return;
+  }
+
+  stopSpeech();
+
+  const panel = document.getElementById(panelId);
+  const speechElements = panel.querySelectorAll('[data-speech]');
+  const fullText = Array.from(speechElements)
+    .map(el => el.getAttribute('data-speech'))
+    .join(' ');
+
+  const utterance = new SpeechSynthesisUtterance(fullText);
+  utterance.lang = 'pt-BR';
+  utterance.rate = 1.02;
+  utterance.pitch = 1.0;
+
+  const ptVoice = getPortugueseVoice();
+  if (ptVoice) {
+    utterance.voice = ptVoice;
+  }
+
+  utterance.onstart = () => {
+    currentButton = button;
+    panel.classList.add('speaking');
+    button.classList.add('active');
+    button.innerHTML = '⏹️ Parar';
+  };
+
+  utterance.onend = () => {
+    stopSpeech();
+  };
+
+  utterance.onerror = () => {
+    stopSpeech();
+  };
+
+  window.speechSynthesis.speak(utterance);
+}
